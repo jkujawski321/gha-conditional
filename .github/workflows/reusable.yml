@@ -4,7 +4,7 @@ on:
     inputs:
       artifact-name:
         description: The name of the deployablke artifact facts
-        required: true
+        required: false
         default: dist
         type: string
 jobs:
@@ -15,5 +15,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: ${{ inputs.artifact-name }}
+      - name: List files
+        run: ls
       - name: Output Information
         run: echo "Deploying and uploading"
